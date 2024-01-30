@@ -1,4 +1,5 @@
 import * as core from '@actions/core'
+import * as exec from '@actions/exec'
 import { wait } from './wait'
 
 /**
@@ -6,6 +7,7 @@ import { wait } from './wait'
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 export async function run(): Promise<void> {
+  /*
   try {
     const ms: string = core.getInput('milliseconds')
 
@@ -21,6 +23,15 @@ export async function run(): Promise<void> {
     core.setOutput('time', new Date().toTimeString())
   } catch (error) {
     // Fail the workflow run if an error occurs
+    if (error instanceof Error) core.setFailed(error.message)
+  }*/
+
+  try {
+    // exec.exec("git clone https://github.com/containers/skopeo.git")
+    // exec.exec("cd skopeo && git checkout -b v1.14.1 v1.14.1")
+    // exec.exec("")
+    core.addPath('./skopeo')
+  } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }
 }
