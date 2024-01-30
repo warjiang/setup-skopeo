@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
-import * as exec from '@actions/exec'
-import { wait } from './wait'
+// import * as exec from '@actions/exec'
+// import { wait } from './wait'
 
 /**
  * The main function for the action.

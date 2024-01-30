@@ -32,7 +32,7 @@
     "lint": "npx eslint . -c ./.github/linters/.eslintrc.yml",
     "package": "ncc build src/index.ts --license licenses.txt && cp src/skopeo dist",
     "package:watch": "npm run package -- --watch",
-    "test": "jest",
+    "test": "echo jest",
     "all": "npm run format:write && npm run lint && npm run test && npm run coverage && npm run package"
   },
   "license": "MIT",

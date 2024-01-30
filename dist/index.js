@@ -2753,6 +2753,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core = __importStar(__nccwpck_require__(186));
+// import * as exec from '@actions/exec'
+// import { wait } from './wait'
 /**
  * The main function for the action.
  * @returns {Promise<void>} Resolves when the action is complete.
@@ -2780,7 +2782,7 @@ async function run() {
         // exec.exec("git clone https://github.com/containers/skopeo.git")
         // exec.exec("cd skopeo && git checkout -b v1.14.1 v1.14.1")
         // exec.exec("")
-        core.addPath('');
+        core.addPath('./skopeo');
     }
     catch (error) {
         if (error instanceof Error)
