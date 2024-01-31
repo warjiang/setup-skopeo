@@ -13,7 +13,7 @@ branding:
 inputs:
   version:
     description: 'Version of skopeo to install'
-    required: true
+    required: false
     default: 'latest'
 
 # Define your outputs here.
