@@ -36,6 +36,6 @@ jobs:
 
 
 ## Credits
-- [skopeo-binary](https://github.com/lework/skopeo-binary): generate the skopeo binary file, it fetches all the tags of official skopeo repo and generate the binary file for each tag by a cronjob.
-- [actions/toolkit](https://github.com/actions/toolkit): some toolkis which very useful for github actions.
-- [actions/typescript-action](https://github.com/actions/typescript-action): which is a template for creating a typescript action.
+- [skopeo-binary](https://github.com/lework/skopeo-binary): generate the skopeo binary file, it fetches all the tags of official skopeo repository and generate the binary file for each tag by a cronjob.
+- [actions/toolkit](https://github.com/actions/toolkit): some toolkis which very useful for GitHub actions.
+- [actions/typescript-action](https://github.com/actions/typescript-action): which is a template for creating a TypeScript action.
