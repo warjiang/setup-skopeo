@@ -15,5 +15,5 @@ export function getDownloadURL(version: string): string {
   if (!supportedArch.includes(aliasedArch)) {
     throw new Error(`Unsupported arch: ${arch}`)
   }
-  return `https://github.com/lework/skopeo-binary/releases/download/${version}/skopeo-${platform}-${arch}`
+  return `https://github.com/lework/skopeo-binary/releases/download/${version}/skopeo-${platform}-${aliasedArch}`
 }
