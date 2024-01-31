@@ -1,9 +1,9 @@
 import os from 'os'
 
 const supportedPlatform = ['darwin', 'linux']
-const supportedArch = ['x64', 'arm64']
+const supportedArch = ['amd64', 'arm64']
 const archAlias: Record<string, string> = {
-  amd64: 'x64'
+  x64: 'amd64'
 }
 export function getDownloadURL(version: string): string {
   const platform = os.platform()

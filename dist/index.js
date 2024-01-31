@@ -6674,9 +6674,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getDownloadURL = void 0;
 const os_1 = __importDefault(__nccwpck_require__(2037));
 const supportedPlatform = ['darwin', 'linux'];
-const supportedArch = ['x64', 'arm64'];
+const supportedArch = ['amd64', 'arm64'];
 const archAlias = {
-    amd64: 'x64'
+    x64: 'amd64'
 };
 function getDownloadURL(version) {
     const platform = os_1.default.platform();
