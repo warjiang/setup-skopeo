@@ -1,4 +1,6 @@
 import * as core from '@actions/core'
+import * as tc from '@actions/tool-cache'
+import { getDownloadURL } from './utils'
 // import * as exec from '@actions/exec'
 // import { wait } from './wait'
 
@@ -27,10 +29,17 @@ export async function run(): Promise<void> {
   }*/
 
   try {
-    // exec.exec("git clone https://github.com/containers/skopeo.git")
-    // exec.exec("cd skopeo && git checkout -b v1.14.1 v1.14.1")
-    // exec.exec("")
-    core.addPath('./skopeo')
+    // Get version of tool to be installed
+    const version = core.getInput('version') || 'v1.14.1'
+
+    // Extract the tarball onto the runner
+    const pathToCLI = './skopeo'
+
+    // Download the specific version of the tool, e.g. as a tarball
+    await tc.downloadTool(getDownloadURL(version), pathToCLI)
+
+    // Expose the tool by adding it to the PATH
+    core.addPath(pathToCLI)
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

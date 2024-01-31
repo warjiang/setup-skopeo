@@ -1,0 +1,19 @@
+import os from 'os'
+
+const supportedPlatform = ['darwin', 'linux']
+const supportedArch = ['x64', 'arm64']
+const archAlias: Record<string, string> = {
+  amd64: 'x64'
+}
+export function getDownloadURL(version: string) {
+  const platform = os.platform()
+  if (!supportedPlatform.includes(platform)) {
+    throw new Error(`Unsupported platform: ${platform}`)
+  }
+  const arch = os.arch()
+  const aliasedArch = archAlias[arch] || arch
+  if (!supportedArch.includes(aliasedArch)) {
+    throw new Error(`Unsupported arch: ${arch}`)
+  }
+  return `https://github.com/lework/skopeo-binary/releases/download/${version}/skopeo-${platform}-${arch}`
+}
