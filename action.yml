@@ -10,11 +10,11 @@ branding:
   color: 'blue'
 
 # Define your inputs here.
-# inputs:
-#   milliseconds:
-#     description: 'Your input description here'
-#     required: true
-#     default: '1000'
+inputs:
+  version:
+    description: 'Version of skopeo to install'
+    required: true
+    default: ''
 
 # Define your outputs here.
 # outputs:
