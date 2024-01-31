@@ -11,7 +11,7 @@ and use skopeo to sync images across the registries. :rocket:
 
 ## Prerequisites
 
-- Basic knowledge of docker images and 
+- Basic knowledge of docker images and
 [skopeo](https://github.com/containers/skopeo) which
 is a container tool to sync images across the registries.
 - This action runs using Node 20.
@@ -48,8 +48,11 @@ can be found [here](https://github.com/lework/skopeo-binary/blob/master/version.
 
 ## Credits
 
-- [skopeo-binary](https://github.com/lework/skopeo-binary): generate the skopeo binary file,
+- [skopeo-binary](https://github.com/lework/skopeo-binary):
+generate the skopeo binary file,
 it fetches all the tags of official skopeo repository
 and generate the binary file for each tag by a cronjob.
-- [actions/toolkit](https://github.com/actions/toolkit): some toolkis which very useful for GitHub actions.
-- [actions/typescript-action](https://github.com/actions/typescript-action): which is a template for creating a TypeScript action.
+- [actions/toolkit](https://github.com/actions/toolkit):
+some toolkis which very useful for GitHub actions.
+- [actions/typescript-action](https://github.com/actions/typescript-action):
+which is a template for creating a TypeScript action.
