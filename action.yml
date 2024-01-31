@@ -14,7 +14,7 @@ inputs:
   version:
     description: 'Version of skopeo to install'
     required: true
-    default: ''
+    default: 'latest'
 
 # Define your outputs here.
 # outputs:

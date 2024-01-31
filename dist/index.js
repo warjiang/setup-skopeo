@@ -6624,27 +6624,15 @@ const utils_1 = __nccwpck_require__(1314);
  * @returns {Promise<void>} Resolves when the action is complete.
  */
 async function run() {
-    /*
-    try {
-      const ms: string = core.getInput('milliseconds')
-  
-      // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-      core.debug(`Waiting ${ms} milliseconds ...`)
-  
-      // Log the current timestamp, wait, then log the new timestamp
-      core.debug(new Date().toTimeString())
-      await wait(parseInt(ms, 10))
-      core.debug(new Date().toTimeString())
-  
-      // Set outputs for other workflow steps to use
-      core.setOutput('time', new Date().toTimeString())
-    } catch (error) {
-      // Fail the workflow run if an error occurs
-      if (error instanceof Error) core.setFailed(error.message)
-    }*/
     try {
         // Get version of tool to be installed
-        const version = core.getInput('version') || 'v1.14.1';
+        let version = core.getInput('version');
+        if (version === 'latest') {
+            // Get the latest version
+            version = await (0, utils_1.getLatestVersion)();
+            core.debug(`Latest version of skopeo is ${version}`);
+        }
+        core.info(`Version to be installed: ${version}`);
         // Extract the tarball onto the runner
         const pathToCLI = './skopeo';
         // Download the specific version of the tool, e.g. as a tarball
@@ -6671,8 +6659,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getDownloadURL = void 0;
+exports.getLatestVersion = exports.getSupportedVersions = exports.getDownloadURL = void 0;
 const os_1 = __importDefault(__nccwpck_require__(2037));
+const https_1 = __importDefault(__nccwpck_require__(5687));
 const supportedPlatform = ['darwin', 'linux'];
 const supportedArch = ['amd64', 'arm64'];
 const archAlias = {
@@ -6691,6 +6680,33 @@ function getDownloadURL(version) {
     return `https://github.com/lework/skopeo-binary/releases/download/${version}/skopeo-${platform}-${aliasedArch}`;
 }
 exports.getDownloadURL = getDownloadURL;
+const url = 'https://raw.githubusercontent.com/lework/skopeo-binary/master/version.txt';
+async function getSupportedVersions() {
+    return new Promise((resolve, reject) => {
+        https_1.default.get(url, res => {
+            let data = '';
+            res.on('data', chunk => {
+                data += chunk;
+            });
+            res.on('end', () => {
+                resolve(data.trim().split('\n')); // Assuming the versions are separated by newlines
+            });
+            res.on('error', err => {
+                reject(err);
+            });
+        });
+    });
+}
+exports.getSupportedVersions = getSupportedVersions;
+async function getLatestVersion() {
+    const versions = await getSupportedVersions();
+    // assuming the versions are sorted in descending order
+    if (versions.length === 0) {
+        throw new Error('No versions found');
+    }
+    return versions[versions.length - 1];
+}
+exports.getLatestVersion = getLatestVersion;
 
 
 /***/ }),
