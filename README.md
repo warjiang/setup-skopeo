@@ -27,7 +27,7 @@ jobs:
   job_id:
     steps:
     - name: 'Set up skopeo'
-      uses: warjiang/setup-skopeo@latest
+      uses: warjiang/setup-skopeo@main
       with:
         version: latest
 
