@@ -5,3 +5,7 @@ MD004:
 # Ordered list item prefix
 MD029:
   style: one
+
+# Line length - do not enforce inside code blocks
+MD013:
+  code_blocks: false
