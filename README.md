@@ -14,7 +14,7 @@ across the registries. :rocket:
 - Basic knowledge of Docker images and
   [skopeo](https://github.com/containers/skopeo) which is a container tool to
   sync images across the registries.
-- This action runs using Node 20. If you are using self-hosted GitHub Actions
+- This action runs using Node 24. If you are using self-hosted GitHub Actions
   runners, you must use a
   [runner version](https://github.com/actions/virtual-environments) that
   supports this version or newer.
