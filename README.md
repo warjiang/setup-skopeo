@@ -42,7 +42,7 @@ jobs:
 ## Inputs
 
 - version: (Optional) Set the version of skopeo. Default: latest. More
-  informations about supported versions can be found
+  information about supported versions can be found
   [here](https://github.com/lework/skopeo-binary/blob/master/version.txt).
 
 ## Credits
