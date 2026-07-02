@@ -11,7 +11,7 @@ across the registries. :rocket:
 
 ## Prerequisites
 
-- Basic knowledge of docker images and
+- Basic knowledge of Docker images and
   [skopeo](https://github.com/containers/skopeo) which is a container tool to
   sync images across the registries.
 - This action runs using Node 20. If you are using self-hosted GitHub Actions
@@ -42,8 +42,8 @@ jobs:
 ## Inputs
 
 - version: (Optional) Set the version of skopeo. Default: latest. More
-  information about supported versions can be found
-  [here](https://github.com/lework/skopeo-binary/blob/master/version.txt).
+  information about supported versions can be found in the
+  [skopeo-binary version manifest](https://github.com/lework/skopeo-binary/blob/master/version.txt).
 
 ## Credits
 

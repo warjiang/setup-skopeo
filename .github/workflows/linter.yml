@@ -19,13 +19,14 @@ jobs:
     steps:
       - name: Checkout
         id: checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Setup Node.js
         id: setup-node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version-file: .node-version
           cache: npm
@@ -34,14 +35,19 @@ jobs:
         id: install
         run: npm ci
 
+      - name: Lint TypeScript
+        id: npm-lint
+        run: npm run lint
+
       - name: Lint Codebase
         id: super-linter
-        uses: super-linter/super-linter/slim@v7
+        uses: super-linter/super-linter/slim@12150456a73e248bdc94d0794898f94e23127c88 # v7
         env:
           DEFAULT_BRANCH: main
           FILTER_REGEX_EXCLUDE: dist/**/*
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_JSON: false
+          VALIDATE_TYPESCRIPT_ES: false
           TYPESCRIPT_DEFAULT_STYLE: prettier
           VALIDATE_ALL_CODEBASE: true
           VALIDATE_JAVASCRIPT_STANDARD: false
